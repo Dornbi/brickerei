@@ -1,0 +1,19 @@
+---
+layout: base.njk
+---
+{%- from "card.njk" import card %}
+<section class="intro">
+{{ content | safe }}
+{%- if cta_text and cta_url %}
+<p><a class="button" href="{{ cta_url }}">{{ cta_text }}</a></p>
+{%- endif %}
+</section>
+<section>
+  <h2 class="section-title">Neuste Beiträge</h2>
+  <div class="cards">
+  {%- for post in collections.posts | head(3) %}
+    {{ card(post, categories) }}
+  {%- endfor %}
+  </div>
+  <p><a class="button" href="/blog-1/">Alle Blog-Beiträge</a></p>
+</section>

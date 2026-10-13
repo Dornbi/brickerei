@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{%- set fullTitle = site.name + " – " + site.tagline if page.url == "/" else title + " – " + site.name %}
+{%- set desc = description or site.description %}
+<title>{{ fullTitle }}</title>
+<meta name="description" content="{{ desc }}">
+<meta property="og:title" content="{{ fullTitle }}">
+<meta property="og:description" content="{{ desc }}">
+<meta property="og:image" content="{{ site.hero_image if site.hero_image.startsWith('http') else 'https://www.brickerei.com' + site.hero_image }}">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://www.brickerei.com{{ page.url }}">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body class="{{ bodyClass }}">
+<header class="site-header{% if page.url == '/' %} hero{% endif %}" style="--hero:url('{{ site.hero_image }}')">
+  <div class="bar">
+    <a class="brand" href="/">{{ site.name }}</a>
+    <nav>
+      {%- for item in site.nav %}
+      {%- set current = (page.url == item.url) or (item.url != "/" and page.url.startsWith(item.url)) or (item.url == "/blog-1/" and section == "blog") %}
+      <a href="{{ item.url }}"{% if current %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {%- endfor %}
+    </nav>
+  </div>
+  {%- if page.url == "/" %}
+  <div class="hero-text"><p>{{ site.tagline }}</p></div>
+  {%- endif %}
+</header>
+<main>
+{{ content | safe }}
+</main>
+<footer>
+  <div class="footer-cols">
+    <div>
+      <h3>Kontakt</h3>
+      <p><a href="mailto:{{ site.email }}">{{ site.email }}</a><br>
+      Flickr Group: <a href="{{ site.flickr_url }}">Brickerei</a></p>
+    </div>
+    {%- if site.next_exhibition %}
+    <div>
+      <h3>Nächste Ausstellung mit Brickerei</h3>
+      <p>{{ site.next_exhibition }}</p>
+    </div>
+    {%- endif %}
+  </div>
+  <p class="legal"><a href="/about/">Impressum</a> · <a href="/datenschutz/">Datenschutz</a> · <a href="/sitemap/">Sitemap</a></p>
+</footer>
+<div class="lightbox" hidden><button class="lb-close" aria-label="Schliessen">×</button><button class="lb-prev" aria-label="Zurück">‹</button><img alt=""><button class="lb-next" aria-label="Weiter">›</button><p class="lb-cap"></p></div>
+<script src="/lightbox.js" defer></script>
+</body>
+</html>

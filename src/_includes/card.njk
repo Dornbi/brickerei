@@ -1,0 +1,27 @@
+{%- macro meta(category, date, categories) -%}
+<p class="meta">
+{%- for c in categories %}{% if c.name == category %}<a href="/blog-1/{{ c.slug }}/">{{ c.name }}</a> · {% endif %}{% endfor -%}
+<time datetime="{{ date | isoDate }}">{{ date | germanDate }}</time></p>
+{%- endmacro -%}
+
+{%- macro card(post, categories) -%}
+{%- set img = post.content | firstImage %}
+<article class="card">
+  {%- if img %}<a class="thumb" href="{{ post.url }}"><img src="{{ img }}" alt="" loading="lazy"></a>{% endif %}
+  <div>
+    {{ meta(post.data.category, post.date, categories) }}
+    <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+    <p>{{ post.content | excerpt }}</p>
+    <a class="more" href="{{ post.url }}">Weiterlesen →</a>
+  </div>
+</article>
+{%- endmacro -%}
+
+{%- macro subnav(active, categories) -%}
+<nav class="subnav">
+  <a href="/blog-1/"{% if active == "" %} aria-current="page"{% endif %}>Alle</a>
+  {%- for c in categories %}
+  <a href="/blog-1/{{ c.slug }}/"{% if active == c.slug %} aria-current="page"{% endif %}>{{ c.name }}</a>
+  {%- endfor %}
+</nav>
+{%- endmacro -%}

@@ -1,0 +1,14 @@
+---
+layout: base.njk
+title: Blog
+section: blog
+permalink: /blog-1/
+---
+{%- from "card.njk" import card, subnav %}
+<h1>Blog</h1>
+{{ subnav("", categories) }}
+<div class="cards">
+{%- for post in collections.posts %}
+  {{ card(post, categories) }}
+{%- endfor %}
+</div>

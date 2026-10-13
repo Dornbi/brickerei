@@ -1,0 +1,19 @@
+---
+layout: base.njk
+title: Sitemap
+permalink: /sitemap/
+---
+<h1>Sitemap</h1>
+<ul>
+  <li><a href="/">Home</a></li>
+  <li><a href="/blog-1/">Blog</a>
+    <ul>
+    {%- for post in collections.posts %}
+      <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
+    {%- endfor %}
+    </ul>
+  </li>
+  {%- for p in collections.all | sort(false, false, "url") %}{% if p.url and p.url.startsWith("/") and p.inputPath.includes("/pages/") %}
+  <li><a href="{{ p.url }}">{{ p.data.title }}</a></li>
+  {%- endif %}{% endfor %}
+</ul>

@@ -1,0 +1,31 @@
+{
+  "name": "Brickerei",
+  "tagline": "LEGO Collaboration Community",
+  "description": "Wir sind eine Collaboration-Community und bauen gemeinsame LEGO-Kreationen. Wir stellen unsere Kollaborations-Projekte regelmässig in der Schweiz und international aus.",
+  "hero_image": "/images/titelbild.jpg",
+  "email": "brickerei@gmail.com",
+  "flickr_url": "https://www.flickr.com/groups/4352128@N23/pool",
+  "next_exhibition": "Die grosse Wild West Anlage wird ab Ende 2025 an der Erlebniswelt Toggenburg in Lichtensteig zu sehen sein.",
+  "nav": [
+    {
+      "url": "/",
+      "label": "Home"
+    },
+    {
+      "url": "/blog-1/",
+      "label": "Blog"
+    },
+    {
+      "url": "/collabs/",
+      "label": "Collabs"
+    },
+    {
+      "url": "/community/",
+      "label": "Community"
+    },
+    {
+      "url": "/links/",
+      "label": "Links"
+    }
+  ]
+}

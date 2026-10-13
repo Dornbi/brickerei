@@ -1,0 +1,10 @@
+{
+  "installCommand": "npm install",
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/j/privacy", "destination": "/datenschutz/", "permanent": true },
+    { "source": "/login", "destination": "/", "permanent": true }
+  ]
+}

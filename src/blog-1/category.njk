@@ -1,0 +1,19 @@
+---
+layout: base.njk
+section: blog
+pagination:
+  data: categories
+  size: 1
+  alias: cat
+permalink: "/blog-1/{{ cat.slug }}/"
+eleventyComputed:
+  title: "{{ cat.name }}"
+---
+{%- from "card.njk" import card, subnav %}
+<h1>{{ cat.name }}</h1>
+{{ subnav(cat.slug, categories) }}
+<div class="cards">
+{%- for post in collections.posts | byCategory(cat.name) %}
+  {{ card(post, categories) }}
+{%- endfor %}
+</div>

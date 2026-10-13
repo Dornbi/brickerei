@@ -1,0 +1,11 @@
+---
+layout: base.njk
+section: blog
+---
+{%- from "card.njk" import meta %}
+<article class="post">
+{{ meta(category, page.date, categories) }}
+<h1>{{ title }}</h1>
+{{ content | safe }}
+<p class="back"><a href="/blog-1/">← Alle Blog-Beiträge</a></p>
+</article>
